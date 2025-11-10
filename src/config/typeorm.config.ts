@@ -9,6 +9,7 @@ export const typeOrmConfig = (configService: ConfigService) : TypeOrmModuleOptio
     password: configService.get<string>('DB_PASSWORD'),
     database: configService.get<string>('DB_NAME'),
     type: 'mysql',
-    entities: [join(__dirname, '/modules/**/*.entity{.ts,.js}')],
+    entities: [join(__dirname, '..', '**', '*.entity.{js,ts}')],
     synchronize: true,
+    autoLoadEntities: true,
 });
