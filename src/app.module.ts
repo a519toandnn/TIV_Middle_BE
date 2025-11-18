@@ -10,7 +10,6 @@ import { CommentModule } from './modules/comment/comment.module';
 
 @Module({
   imports: [
-    UserModule, 
     ConfigModule.forRoot({
       isGlobal: true
     }),
@@ -18,6 +17,7 @@ import { CommentModule } from './modules/comment/comment.module';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) : TypeOrmModuleOptions => typeOrmConfig(configService),
     }),
+    UserModule,
     ArticleModule,
     CommentModule,
   ],

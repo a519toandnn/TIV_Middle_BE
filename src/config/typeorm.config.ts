@@ -10,6 +10,8 @@ export const typeOrmConfig = (configService: ConfigService) : TypeOrmModuleOptio
     database: configService.get<string>('DB_NAME'),
     type: 'mysql',
     entities: [join(__dirname, '..', '**', '*.entity.{js,ts}')],
+    migrations: ['dist/migrations/*.{js,ts}'],
+    migrationsRun: true,
     synchronize: true,
     autoLoadEntities: true,
 });
