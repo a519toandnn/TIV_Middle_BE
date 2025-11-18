@@ -28,8 +28,8 @@ export class UserService {
 
   async login(createUserDto: CreateUserDto) {
     const {email, username} = createUserDto;
-    const user = await this.userModel.findOneBy({ email: email, username: username });
-    if (!user) {
+    const loginUser = await this.userModel.findOneBy({ email: email, username: username });
+    if (!loginUser) {
       return {
         message: 'Invalid email or username',
       };
@@ -37,7 +37,7 @@ export class UserService {
     return {
       message: 'Login successful',
       user: {
-        ...user
+        ...loginUser
       },
     };
   }
